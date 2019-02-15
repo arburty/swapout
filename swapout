@@ -17,6 +17,11 @@ if [[ $1 == "-f" ]]; then
 fi
 
 files="$(ls $dir) all done"
+if [[ $(echo $files | wc -w | tr -d '[:blank:]') -eq 2 ]]
+then
+    echo "No files in ~/.vimswap"
+    exit 0
+fi
 
 PS3="what file(s) do you want to delete? "
 echo "note: '$PROGRAM -f' removes all files with no extra action necassary"
